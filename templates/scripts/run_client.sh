@@ -1,4 +1,6 @@
 #!/bin/bash
+echo ---test----
+ exit 0
 #Define global APP_ROOT directory
 
 if [ -z "${1}" ] ; then

@@ -4,7 +4,7 @@
   - ../vars/main.yml
   tasks:
   - name: transfer iperf_servercon.sh
-    copy: src=files/scripts dest=/tmp/ mode=0755
+    copy: src=../files/scripts dest=/tmp/ mode=0755
 
-    - name: test redis benchmark on client
-      shell: /tmp/run_client.sh {{ server_addr }}  
+  - name: test redis benchmark on client
+    shell: /tmp/scripts/run_client.sh {{ server_addr }}  
