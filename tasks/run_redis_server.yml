@@ -1,0 +1,8 @@
+---
+- name: kill redis server on ARM64 Server
+  shell:  ps -ef|grep redis-server |grep -v grep|awk  '{print "kill -9 " $2}' |sh  &
+
+- name: Run redis server on ARM64 Server
+  shell: taskset -c {{ item }} /usr/bin/redis-server /usr/local/redis/config/redis_cpu{{ item }}_port{{ "70" + item }}.conf
+  with_sequence: start={{ redis_cpus.split('-')[0] }} end={{ redis_cpus.split('-')[-1] }}
+  when: redis_local_facts|bool

@@ -1,0 +1,18 @@
+---
+- name: install redis for redhat family
+  yum: name=redis state=present disable_gpg_check=yes
+  when: ansible_os_family == 'RedHat'
+
+- name: create redis conf directory
+  file:
+    path: /usr/local/redis/config
+    state: directory
+    mode: 0755
+
+- name: copy redis server configurations
+  vars:
+  template:
+    src: redis.conf.j2
+    dest: /usr/local/redis/config/redis_cpu{{ item }}_port70{{ item }}.conf
+    mode: 0644
+  with_sequence: start={{ redis_cpus.split('-')[0] }} end={{ redis_cpus.split('-')[-1] }}
