@@ -3,6 +3,8 @@
   vars_files:
   - ../vars/main.yml
   tasks:
-    - name: test redis benchmark on client
-      shell: /etc/ansible/roles/ansible-redis/tests/run_client.sh {{ server_addr }}  
+  - name: transfer iperf_servercon.sh
+    copy: src=files/scripts dest=/tmp/ mode=0755
 
+    - name: test redis benchmark on client
+      shell: /tmp/run_client.sh {{ server_addr }}  
