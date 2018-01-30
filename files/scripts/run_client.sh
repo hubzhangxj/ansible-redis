@@ -38,7 +38,8 @@ service irqbalance stop
 #Bind network interrupt to specific cpus
 python ./set_ethirq_cpu_affinity.py 0 15
 
-max_inst=11
+#max_inst=11
+max_inst=2
 cur_inst=1
 
 while [[ ${cur_inst} -lt ${max_inst} ]] ; 
