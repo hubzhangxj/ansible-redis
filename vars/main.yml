@@ -2,4 +2,4 @@
 
 redis_cpus: 17-26
 
-server_addr: "192.168.1.162"
+server_addr: "192.168.1.155"

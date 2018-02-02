@@ -3,10 +3,10 @@
   hosts: NetworkClient
   remote_user: root
   roles:
-    - { role: ansible-redis, redis_local_facts: false }
+    - { role: redis, redis_local_facts: false }
 
 - name: Install redis on Server
   hosts: NetworkServer
   remote_user: root
   roles: 
-    - { role: ansible-redis, redis_local_facts: true }
+    - { role: redis, redis_local_facts: true }
